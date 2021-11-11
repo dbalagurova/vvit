@@ -77,11 +77,6 @@ object Lab3 extends App {
       case Success(a) => Success(a)
       case Failure(error) => Failure(error)
     }
-    /*
-    Try(impure(str)).toEither match {
-      case Right(k) => Success(k)
-      case Left(l) => Success(0)
-     */
 
     // примените функцию из пункта (e) здесь, не изменяйте сигнатуру
     def testGoodOldJava(impure: String => Int, str: String): Try[Int] = goodOldJava(impure, str)
@@ -103,11 +98,6 @@ object Lab3 extends App {
      */
     def testGroupUsers(users: Seq[User]): Map[String, Int] = {
       users.groupBy(_.name).mapValues(s => s.map(_.age).sum / s.length)
-      //users.groupBy(_.name).map(n => (n._1, n._2.foldLeft(0)(_ + _.age) / n._2.length))
-      /*def avg(xs: Seq[Int]) = xs.sum / xs.length
-      users.groupBy(_.name).map {
-        kv => (kv._1, avg(kv._2.map(_.age)))
-      }*/
     }
 
     /* b) Дана `Map[String, User]` состоящая из имен пользователей `User`, сколько имен пользователей, содержащихся в Map, содержат подстроку "Adam"?
